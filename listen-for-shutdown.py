@@ -1,12 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-
-import RPi.GPIO as GPIO
+from gpiozero import LED, Button
 import subprocess
 
+led = LED(4)
+power_button = Button(3)
+led.on()
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.wait_for_edge(3, GPIO.FALLING)
-
+power_button.wait_for_press()
 subprocess.call(['shutdown', '-h', 'now'], shell=False)
