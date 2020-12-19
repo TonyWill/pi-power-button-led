@@ -8,4 +8,5 @@ power_button = Button(3)
 led.on()
 
 power_button.wait_for_press()
+led.blink(0.1,0.1)
 subprocess.call(['shutdown', '-h', 'now'], shell=False)
